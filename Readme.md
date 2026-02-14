@@ -1,1 +1,6 @@
-wget --no-check-certificate -O ~/fedora.iso https://download.fedoraproject.org/pub/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-41-1.4.iso
+menuentry "INSTALACJA FEDORY" {
+    set isofile="/home/dartz/fedora1"
+    loopback loop (hd0,1)$isofile
+    linux (loop)/images/pxeboot/vmlinuz inst.stage2=hd:LABEL=Fedora-W-Live-41-1-4 iso-scan/filename=$isofile quiet
+    initrd (loop)/images/pxeboot/initrd.img
+}
